@@ -323,6 +323,8 @@ https://www.codeflow.site/ru/article/java-iterate-list
 
 (И наоборот, если коллекция `extends` от `Iterable`, то мы можем перебирать элементы этой коллекции с помощью `foreach`)
 
+Исключение составляют массивы, которые не реализуют интерфейс Iterable и для них `foreach` это просто синтаксический сахар над `for`.
+
 [к оглавлению](#collections-lite)
 
 ## 15. В чем разница между Iterator и ListIterator?
