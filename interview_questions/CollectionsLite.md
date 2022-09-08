@@ -99,6 +99,8 @@
 ключей соответствует множество значений. Ключи уникальные. По ключу получаем значение. У мапы нет итератора. 
 Map не наследуется от Collection.) 
 
+![Иерархия коллекций](https://github.com/greenman777/job4j/blob/master/interview_questions/Collection2.png)
+
 Справочник по Java Collections Framework https://habr.com/ru/post/237043/
 
 [к оглавлению](#collections-lite)
