@@ -375,23 +375,21 @@ es[size = newSize] = null;
 
 ## 19. Назовите основные методы интерфейса Collections?
 
-Основные:
-+ `int size()`
-+ `boolean isEmpty()`
-+ `boolean contains(Object o)`
-+ `Iterator<E> iterator()`
-+ `Object[] toArray()`
-+ `boolean add(E e)`
-+ `boolean remove(Object o)`
-+ `void clear()`
-
-Остальные:
-+ `boolean containsAll(Collection<?> c)`
-+ `boolean addAll(Collection<? extends E> c)`
-+ `boolean removeAll(Collection<?> c)`
-+ `boolean retainAll(Collection<?> c)`
-+ `boolean equals(Object o)`
-+ `int hashCode()`
+`boolean add(E obj)` - добавляет obj к вызывающей коллекции. Возвращает true, если obj был добавлен к коллекции.
+`boolean addAll(Collection<? extends Е> с)` - добавляет все элементы  к вызывающей коллекции. Возвращает true, если операция удалась (то есть все элементы добавлены). В противном случае возвращает false.
+`void clear()` - удаляет все элементы вызывающей коллекции. 
+`boolean contains(Object obj)` - возвращает true, если obj является элементом вызывающей коллекции. В противном случае возвращает false.
+`boolean containsAll(Collection<?> с)` - возвращает true, если вызывающая коллекция содержит все элементы с. В противном случае возвращает false.
+`boolean equals(Object obj)` - возвращает true, если вызывающая коллекция и obj эквивалентны. В противном случае возвращает false.
+`int hashCode()` - возвращает хешкод вызывающей коллекции. 
+`boolean isEmpty()` - возвращает true, если вызывающая коллекция пуста. В противном случае возвращает false. 
+`Iterator<E> iterator()` - возвращает итератор для вызывающей коллекции. 
+`boolean remove(Object obj)` - удаляет один экземпляр obj из вызывающей коллекции. Возвращает true, если элемент удален. В противном случае возвращает false.
+`boolean removeAll(Collection<?> с)` - удаляет все элементы из вызывающей коллекции. Возвращает truе, если в результате коллекция изменяется (то есть элементы удалены). В противном случае возвращает false. 
+`boolean retainAll(Collection<?> с)` - удаляет все элементы кроме входящих из вызывающей коллекции. Возвращает true, если в результате коллекция изменяется (то есть элементы удалены). В противном случае возвращает false. 
+`int size()` - возвращает количество элементов, содержащихся в коллекции. 
+`Object[] toArray()` - возвращает массив, содержащий все элементы вызывающей коллекции. Элементы массива являются копиями элементов коллекции.
+`removeIf(Predicate<? super E> filter)` - удаляет элементы из коллекции, соответствующие заданному условию.
 
 [к оглавлению](#Collections-Lite)
 
