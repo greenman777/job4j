@@ -60,7 +60,7 @@
 эффективного доступа к ним.
 
 Инструменты для работы с такими структурами в Java содержатся в Java Collections Framework. Фреймворк состоит из интерфейсов, их реализаций и утилитарных классов для работы со списками: сортировки, поиска, преобразования. Т.е. это набор интерфейсов и реализующих их классов.
-![Иерархия коллекций](https://github.com/greenman777/job4j/blob/master/interview_questions/Collection1.jpg)
+
 [к оглавлению](#collections-lite)
 
 ## 2. Назовите преимущества использования коллекций?
@@ -338,6 +338,8 @@ es[size = newSize] = null;
 [к оглавлению](#collections-lite)
 
 ## 18. Расскажите иерархию интерфейсов Collections framework?
+
+![Иерархия коллекций](https://github.com/greenman777/job4j/blob/master/interview_questions/Collection1.jpg)
 
 + interface **`Collections`** extends **`Iterable`**.
     + interface `Set` (коллекция без дублирования)
