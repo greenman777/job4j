@@ -578,7 +578,7 @@ Collections.unmodifiableMap(map);
 
 [к оглавлению](#Collections-Lite)
 
-## 30. В чем разница между Iterator и Iterable?
+## 31. В чем разница между Iterator и Iterable?
 
 Если какой-либо класс реализует **Iterable** интерфейс, он получает возможность перебирать объект этого класса, используя **Iterator**.
 
