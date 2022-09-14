@@ -338,7 +338,7 @@ https://www.codeflow.site/ru/article/java-iterate-list
 `ListIterator` позволяет перебирать список в обоих направлениях, при помощи методов `next()` и `previous()`.
 
 + `ListIterator` позволяет модифицировать список, добавляя/заменяя/удаляя элементы с помощью методов `add()`, `set()`
-`remove()`. Iterator не поддерживает данного функционала.
+`remove()`. Iterator не поддерживает данного функционала, только remove().
 
 [к оглавлению](#collections-lite)
 
