@@ -331,7 +331,7 @@ https://www.codeflow.site/ru/article/java-iterate-list
 
 `ListIterator` расширяет `Iterator`, отличия следующие:
 
-+ `Iterator` может использоваться для перебора элементов коллекций `Set`, `List` и `Map`. 
++ `Iterator` может использоваться для перебора элементов коллекций `Set`, `List` и `Map` (через entrySet(), keySet(), или values()). 
 `ListIterator` может быть использован только для перебора элементов коллекции `List`
 
 + `Iterator` позволяет перебирать элементы только в одном направлении, при помощи метода `next()`. 
