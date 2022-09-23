@@ -62,9 +62,10 @@
     return вычисленное значение;
 }
 ```
-Если функция не принимает параметры, то указываем пустые скобки. Если не возвращает, то не указываем `return`.
-
-подробнее https://www.ibm.com/developerworks/ru/library/j-java8lambdas/index.html
+Если функция не принимает параметры, то указываем пустые скобки. Если выражение содержит единственный оператор return, то его можно убрать вместе с фигурными скобками.
+```java
+Comparator<Attachment> comparator = (left, right) -> Integer.compare(left.getSize(), right.getSize());
+```
 
 [к оглавлению](#FP-Lambda-Stream-API)
 
