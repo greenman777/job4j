@@ -160,7 +160,26 @@ Consumer<String> consumer = System.out::println;
 
 При использовании конструкторов методы функциональных интерфейсов должны принимать тот же список параметров,
 что и конструкторы класса, и должны возвращать объект данного класса.
+```java
+class Person {
+    String firstName;
+    String lastName;
 
+    Person() {}
+
+    Person(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+}
+
+interface PersonFactory<P extends Person> {
+    P create(String firstName, String lastName);
+}    
+
+PersonFactory<Person> personFactory = Person::new;
+Person person = personFactory.create("Peter", "Parker");
+```
 [к оглавлению](#FP-Lambda-Stream-API)
 
 ## 8. Расскажите о зоне видимости переменных в lambda выражениях?
