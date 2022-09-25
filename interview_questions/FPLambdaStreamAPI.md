@@ -225,6 +225,11 @@ integers.forEach(lambdaWrapper(i -> System.out.println(50 / i)));
 приходится оборачивать их в `RuntimeException`. Сделать это можно с помощью конструкции `try-catch-finally` или с помощью метода обертки.
 
 ```java
+@FunctionalInterface
+public interface ThrowingConsumer {
+    void accept(T t) throws E;
+}
+    
 static  Consumer throwingConsumerWrapper(
   ThrowingConsumer throwingConsumer) {
 
