@@ -88,24 +88,6 @@ Comparator<Attachment> comparator = (left, right) -> Integer.compare(left.getSiz
 
 + **Predicate<T>** (утверждение) - проверяет соблюдение некоторого условия.
 Если оно соблюдается, то возвращается значение `true`. В качестве параметра лямбда-выражение принимает объект типа `T`. Наиболее часто применяется в фильтрах и сравнении.
-```java
-@FunctionalInterface
-public interface Predicate<T> {
-
-    boolean test(T t);
-}
-@FunctionalInterface
-public interface BiPredicate<T, U> {
-
-    boolean test(T t, U u);
-}  
-```
-**Использование**:
-```java
-Predicate<String> pred = s -> s.isEmpty();
-System.out.println("Строка пустая: " + pred.test(""));
-System.out.println("Строка пустая: " + pred.test("test"));    
-```
 
 + **Function<T,R>** - представляет функцию перехода от объекта типа `T` к объекту типа `R`.
 
@@ -119,6 +101,7 @@ System.out.println("Строка пустая: " + pred.test("test"));
 + **UnaryOperator<T>** - принимает в качестве параметра объект типа `T`,
 выполняет над ними операции и возвращает результат операций в виде объекта типа `T`.
 
+  
 подробнее https://metanit.com/java/tutorial/9.3.php
 
 [к оглавлению](#FP-Lambda-Stream-API)
