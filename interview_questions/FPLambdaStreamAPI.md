@@ -196,13 +196,50 @@ List<Button> buttons = stream.collect(Collectors.toList());
 ## 9. Как быть в ситуации, если внутри lambda выражении операторы могут выкинуть исключение?
 
 Лямбда-выражение может генерировать исключение.
+В общем случае в лямбда-выражениях нельзя использовать методы, которые могут выбросить исключения.
+Поток данных не должен прерываться. Поэтому лучше всего не использовать лямбда-выражения с исключениями.
+    
 + если тело лямбда-выражения может бросить проверяемое `checked` исключение, то оно должно быть объявлено в 
 абстрактном методе целевого функционального интерфейса в выражении `throws`.
-+ либо должно быть обработано внутри лямбда-выражения с помощью конструкции `try-catch-finally`.
++ либо должно быть обработано внутри лямбда-выражения с помощью конструкции `try-catch-finally` (это лишает лямбда выражения своей краткости).
++ существует подход, когда сначала мы пишем метод-обертку, который будет отвечать за обработку исключения, а затем передаём лямбда-выражение в качестве параметра этому методу.
 
+```java
+static Consumer lambdaWrapper(Consumer consumer) {
+    return i -> {
+        try {
+            consumer.accept(i);
+        } catch (ArithmeticException e) {
+            System.err.println(
+              "Arithmetic Exception occured : " + e.getMessage());
+        }
+    };
+}
+
+List integers = Arrays.asList(3, 9, 7, 0, 10, 20);
+integers.forEach(lambdaWrapper(i -> System.out.println(50 / i)));    
+ ```
+    
 Как известно из функциональных интерфейсов в `Stream API` нельзя выбрасывать контролируемые исключения.
 Если по каким-то причинам это необходимо (например, работа с файлами, базами данных или по сети),
-приходится оборачивать их в `RuntimeException`.
+приходится оборачивать их в `RuntimeException`. Сделать это можно с помощью конструкции `try-catch-finally` или с помощью метода обертки.
+
+```java
+static  Consumer throwingConsumerWrapper(
+  ThrowingConsumer throwingConsumer) {
+
+    return i -> {
+        try {
+            throwingConsumer.accept(i);
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
+    };
+}
+
+List integers = Arrays.asList(3, 9, 7, 0, 10, 20);
+integers.forEach(throwingConsumerWrapper(i -> writeToFile(i)));
+```
 
 подробней https://www.codeflow.site/ru/article/java-lambda-exceptions
 
