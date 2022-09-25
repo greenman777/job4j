@@ -101,6 +101,7 @@ Comparator<Attachment> comparator = (left, right) -> Integer.compare(left.getSiz
 + **UnaryOperator<T>** - принимает в качестве параметра объект типа `T`,
 выполняет над ними операции и возвращает результат операций в виде объекта типа `T`.
 
+![Функциональные интерфейсы](https://github.com/greenman777/job4j/blob/master/interview_questions/Function%20Interface.jpg)
   
 подробнее https://metanit.com/java/tutorial/9.3.php
 
