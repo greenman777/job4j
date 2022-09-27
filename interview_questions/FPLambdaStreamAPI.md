@@ -380,8 +380,7 @@ Stream.mapToInt(ToIntFunction mapper)
 Stream.mapToLong(ToLongFunction mapper)
 ```
 ```java
-Stream.of("10", "11", 12"
-")
+Stream.of("10", "11", "12")
     .map(x -> Integer.parseInt(x))
     .forEach(System.out::println);
 ```
