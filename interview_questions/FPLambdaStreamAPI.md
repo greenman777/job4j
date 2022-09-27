@@ -396,14 +396,25 @@ Stream.of("10", "11", "12")
 Например, мы хотим установить для каждого телефона цену со скидкой и цену без скидки.
 Т.е. из одного объекта Phone нам надо получить два объекта с информацией в виде строки.
 ```java
-    Stream<Phone> phoneStream = Stream.of(new Phone("iPhone 6 S", 54000), new Phone("Lumia 950", 45000),
-                    new Phone("Samsung Galaxy S 6", 40000));
-    phoneStream
-        .flatMap(p->Stream.of(
-                String.format("название: %s  цена без скидки: %d", p.getName(), p.getPrice()),
-                String.format("название: %s  цена со скидкой: %d", p.getName(), p.getPrice() - (int)(p.getPrice()*0.1))
-        ))
-        .forEach(s->System.out.println(s));
+class Human {
+    private final String name;
+    private final List<String> pets;
+ 
+    //constructors, getters
+}
+
+public static void main(String[] args) {
+    List<Human> humans = asList(
+            new Human("Sam", asList("Buddy", "Lucy")),
+            new Human("Bob", asList("Frankie", "Rosie")),
+            new Human("Marta", asList("Simba", "Tilly")));
+ 
+    List<String> petNames = humans.stream()
+            .flatMap(human -> human.getPets().stream())
+            .collect(Collectors.toList());
+ 
+    System.out.println(petNames); // output [Buddy, Lucy, Frankie, Rosie, Simba, Tilly]
+}
 ```
 
 [к оглавлению](#FP-Lambda-Stream-API)
