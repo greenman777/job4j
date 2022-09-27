@@ -351,6 +351,14 @@ public static void main(String[] args) {
 Он принимает в качестве параметра некоторое условие в виде объекта `Predicate<T>`
 и возвращает новый поток из элементов, которые удовлетворяют этому условию.
 
+```java
+List lines = Arrays.asList("spring", "node", "alien");
+
+List result = lines.stream()              
+.filter(line -> !"alien".equals(line))
+.collect(Collectors.toList());
+```
+    
 [к оглавлению](#FP-Lambda-Stream-API)
 
 ## 13. Что делает метод map?
