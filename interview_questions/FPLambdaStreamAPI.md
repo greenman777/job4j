@@ -274,6 +274,8 @@ integers.forEach(throwingConsumerWrapper(i -> writeToFile(i)));
 сократить запись выполняемых действий. Т.е. Stream API позволяет взаимодействовать с данными в функциональном стиле, 
 пердставляя их в качестве конечного потока данных.
 
+![Stream](https://github.com/greenman777/job4j/blob/master/interview_questions/stream.png)
+ 
 Javadoc https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html
 
 Полное руководство по Java 8 Stream API в картинках и примерах https://annimon.com/article/2778
