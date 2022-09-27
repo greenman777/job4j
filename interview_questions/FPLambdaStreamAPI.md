@@ -372,6 +372,19 @@ List result = lines.stream()
 Передаваемая в метод `map` функция задает преобразование от объектов типа `T` к типу `R`.
 И в результате возвращается новый поток с преобразованными объектами.
 
+Map применяет функцию к каждому элементу и затем возвращает стрим, в котором элементами будут результаты функции. 
+Так же map можно применять для изменения типа элементов.
+```
+Stream.mapToDouble(ToDoubleFunction mapper)
+Stream.mapToInt(ToIntFunction mapper)
+Stream.mapToLong(ToLongFunction mapper)
+```
+```java
+Stream.of("10", "11", 12"
+")
+    .map(x -> Integer.parseInt(x))
+    .forEach(System.out::println);
+```
 [к оглавлению](#FP-Lambda-Stream-API)
 
 ## 14. Что делает метод flatMap?
