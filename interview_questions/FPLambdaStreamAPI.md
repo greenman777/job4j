@@ -578,25 +578,10 @@ Stream может выполнятся в несколько параллель�
 С Java 9 можно использовать `java takeWhile` - промежуточная операция, возвращает элементы до тех пор, пока они
 удовлетворяют условию, т.е. предикат возвращает `true`.
 
-Лучше использовать итератор:
+Пример:
+
 ```java
-    Iterator<BuyOrderType> iter = market.buyOrders() // replace BuyOrderType with correct type here
-                .stream()
-                .filter(buyOrder -> buyOrder.price >= sellOrder.price)
-                .sorted(BY_ASCENDING_PRICE).iterator();
-    while (iter.hasNext()) {
-        BuyOrderType buyOrder = iter.next()  // replace BuyOrderType with correct type here
-        double tradeVolume = Math.min(buyOrder.quantity, sellOrder.quantity);
-        double price = buyOrder.price;
-        buyOrder.quantity -= tradeVolume;
-        sellOrder.quantity -= tradeVolume;
-        Trade trade = new Trade.Builder(market, price, tradeVolume, Trade.Type.SELL).build();
-        CommonUtil.convertToJSON(trade);
-        if (sellOrder.quantity == 0) {
-            System.out.println("order fulfilled");
-            break;
-        }
-    }
+list.stream().takeWhile(item -> !item.isEmpty()) .forEach(item -> processItem(item));
 ```
 
 [к оглавлению](#FP-Lambda-Stream-API)
@@ -605,7 +590,12 @@ Stream может выполнятся в несколько параллель�
 
 Вместо этого можно использовать `filter` - промежуточная операция, фильтрует элементы по условию.
 
+```java
+list.stream() .filter(item -> !item.isEmpty()) .forEach(item -> processItem(item));
+```
+
 А также `return`:
+
 ```java
     public static void main(String[] args) {
         ArrayList<String> stringList = new ArrayList<>();
