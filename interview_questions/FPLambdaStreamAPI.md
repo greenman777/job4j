@@ -532,6 +532,16 @@ Map<Boolean, List<Phone>> phonesByCompany = phoneStream.collect(
     String sentence = wordsStream.reduce("Результат:", (x,y)->x + " " + y);
     System.out.println(sentence); // Результат: мама мыла раму
 ```
+**Третья форма записи reduce**
+
+```java
+<U> U reduce(U identity,
+             BiFunction<U, ? super T, U> accumulator,
+             BinaryOperator<U> combiner);
+```
+
+**accumulator** - это функция, которая добавляет элемент Stream (тип которого обозначен T) к промежуточному результату операции reduce (тип которой обозначен U) и возвращает обновленный результат (также типа U).
+**combiner** берет два промежуточных результата (оба одного типа U) и объединяет их в результат, тип которого также U.
 
 Допустим мы хотим найти сумму цен тех телефонов, у которых цена меньше определенного значения.
 Для этого используем третью версию метода `reduce`:
