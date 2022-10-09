@@ -472,6 +472,28 @@ ArrayList<String> filteredPhones = phones.filter(s->s.length()<12)
                 (list1, list2)-> list1.addAll(list2)); // добавляем в список другой список
 ```
 
+** Чтобы сгруппировать данные по какому-нибудь признаку, нам надо использовать в связке метод ** ```collect()``` объекта ```Stream``` и метод ```Collectors.groupingBy().```
+
+```java
+Map<String, Long> map3 = workers.stream()
+       .collect(Collectors.groupingBy(Worker::getPosition, Collectors.counting()));
+```
+
+** Метод ** ``` Collectors.partitioningBy() ``` ** имеет похожее действие, только он делит элементы на группы по принципу, соответствует ли элемент определенному условию. Например:**
+
+```java
+Map<Boolean, List<Phone>> phonesByCompany = phoneStream.collect(
+                Collectors.partitioningBy(p->p.getCompany()=="Apple"));
+```
+
++ Метод ** Collectors.counting ** применяется в Collectors.groupingBy() для вычисления количества элементов в каждой группе:
+
++ Метод ** Collectors.summing ** применяется для подсчета суммы. В зависимости от типа данных, к которым применяется метод, он имеет следующие формы: summingInt(), summingLong(), summingDouble(). 
+
++ Методы ** maxBy ** и ** minBy ** применяются для подсчета минимального и максимального значения в каждой группе. В качестве параметра эти методы принимают функцию компаратора, которая нужна для сравнения значений. Например, найдем для каждой компании телефон с минимальной ценой
+
++ Методы ** summarizingInt() ** / ** summarizingLong() ** / ** summarizingDouble() ** позволяют объединить в набор значения соответствующих типов
+
 [к оглавлению](#FP-Lambda-Stream-API)
 
 ## 16. Что делает метод reduce?
