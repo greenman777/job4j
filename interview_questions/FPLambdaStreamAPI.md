@@ -472,14 +472,14 @@ ArrayList<String> filteredPhones = phones.filter(s->s.length()<12)
                 (list1, list2)-> list1.addAll(list2)); // добавляем в список другой список
 ```
 
-** Чтобы сгруппировать данные по какому-нибудь признаку, нам надо использовать в связке метод ** ```collect()``` объекта ```Stream``` и метод ```Collectors.groupingBy().```
+**Чтобы сгруппировать данные по какому-нибудь признаку, нам надо использовать в связке метод** ```collect()``` объекта ```Stream``` и метод ```Collectors.groupingBy().```
 
 ```java
 Map<String, Long> map3 = workers.stream()
        .collect(Collectors.groupingBy(Worker::getPosition, Collectors.counting()));
 ```
 
-** Метод ** ``` Collectors.partitioningBy() ``` ** имеет похожее действие, только он делит элементы на группы по принципу, соответствует ли элемент определенному условию. Например:**
+**Метод** ``` Collectors.partitioningBy() ``` **имеет похожее действие, только он делит элементы на группы по принципу, соответствует ли элемент определенному условию. Например:**
 
 ```java
 Map<Boolean, List<Phone>> phonesByCompany = phoneStream.collect(
