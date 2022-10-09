@@ -458,12 +458,19 @@ HashSet<String> filteredPhones = phones.filter(s->s.length()<12).
 ```java
 <R> R collect(Supplier<R> supplier, BiConsumer<R,? super T> accumulator, BiConsumer<R,R> combiner)
 ```
-+ supplier: создает объект коллекции
++ supplier: создает объект коллекции. Возвращает функцию, которая создает экземпляр изменяемой структуры данных, которую мы будем использовать для накопления элементов ввода типа  T.
 
-+ accumulator: добавляет элемент в коллекцию
++ accumulator: добавляет элемент в коллекцию. Возвращает функцию, которая возьмет аккумулятор и один элемент типа  T, мутирующий аккумулятор.
 
-+ combiner: бинарная функция, которая объединяет два объекта
++ combiner: бинарная функция, которая объединяет два объекта. Используется для объединения двух аккумуляторов в один. Он используется, когда сборщик выполняется параллельно, Stream<T> сначала разделяя входные данные  и собирая их независимо.
 
+```java
+ArrayList<String> filteredPhones = phones.filter(s->s.length()<12)
+            .collect(
+                ()->new ArrayList<String>(), // создаем ArrayList
+                (list, item)->list.add(item), // добавляем в список элемент
+                (list1, list2)-> list1.addAll(list2)); // добавляем в список другой список
+```
 
 [к оглавлению](#FP-Lambda-Stream-API)
 
