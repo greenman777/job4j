@@ -458,11 +458,11 @@ HashSet<String> filteredPhones = phones.filter(s->s.length()<12).
 ```java
 <R> R collect(Supplier<R> supplier, BiConsumer<R,? super T> accumulator, BiConsumer<R,R> combiner)
 ```
-++supplier: создает объект коллекции
++ supplier: создает объект коллекции
 
-++accumulator: добавляет элемент в коллекцию
++ accumulator: добавляет элемент в коллекцию
 
-++combiner: бинарная функция, которая объединяет два объекта
++ combiner: бинарная функция, которая объединяет два объекта
 
 
 [к оглавлению](#FP-Lambda-Stream-API)
