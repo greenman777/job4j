@@ -438,6 +438,33 @@ public static void main(String[] args) {
 + `toSet()` преобразование к типу `Set`
 + `toMap()` преобразование к типу `Map`
 
+```java
+List<String> filteredPhones = phones.stream()
+                .filter(s->s.length()<10)
+                .collect(Collectors.toList());
+
+Map<String, Integer> phones = phoneStream
+            .collect(Collectors.toMap(p->p.getName(), t->t.getPrice()));
+```
+Если нам надо создать какой-то определенный тип коллекции, например, HashSet, то мы можем использовать специальные функции, которые определены в классах-коллекций. Например, получим объект HashSet:
+
+```java
+HashSet<String> filteredPhones = phones.filter(s->s.length()<12).
+                                    collect(Collectors.toCollection(HashSet::new));
+```
+Выражение HashSet::new представляет функцию создания коллекции.
+
+Вторая форма метода collect имеет три параметра:
+```java
+<R> R collect(Supplier<R> supplier, BiConsumer<R,? super T> accumulator, BiConsumer<R,R> combiner)
+```
+++supplier: создает объект коллекции
+
+++accumulator: добавляет элемент в коллекцию
+
+++combiner: бинарная функция, которая объединяет два объекта
+
+
 [к оглавлению](#FP-Lambda-Stream-API)
 
 ## 16. Что делает метод reduce?
