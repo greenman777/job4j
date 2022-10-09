@@ -643,12 +643,12 @@ list.stream() .filter(item -> !item.isEmpty()) .forEach(item -> processItem(item
 
 `orElse()`, `orElseThrow()`:
 
-Как было раньше:`java Person personNew = person != null ? person : new Person();`
+Как было раньше:```java Person personNew = person != null ? person : new Person();```
 
 То же самое, но с использованием `Optional`: `Person personNew = person.orElse(new Person());`
 
 Или, если не хотим создавать объект, можно выбросить исключение:
-`java Person personNewThrow = person.orElseThrow(Exception::new);`
+```java Person personNewThrow = person.orElseThrow(Exception::new);```
 
 [к оглавлению](#FP-Lambda-Stream-API)
 
