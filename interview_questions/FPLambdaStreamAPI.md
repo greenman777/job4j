@@ -512,6 +512,22 @@ Map<Boolean, List<Phone>> phonesByCompany = phoneStream.collect(
 
 >accept(): добавляет в набор новый элемент
 
+Метод **mapping** позволяет дополнительно обработать данные и задать функцию отображения объектов из потока на какой-нибудь другой тип данных. Например:
+
+```java
+Map<String, List<String>> phonesByCompany = phoneStream.collect(
+    Collectors.groupingBy(Phone::getCompany,
+        Collectors.mapping(Phone::getName, Collectors.toList())));
+         
+for(Map.Entry<String, List<String>> item : phonesByCompany.entrySet()){
+ 
+    System.out.println(item.getKey());
+    for(String name : item.getValue()){
+        System.out.println(name);
+    }
+}
+```
+
 [к оглавлению](#FP-Lambda-Stream-API)
 
 ## 16. Что делает метод reduce?
