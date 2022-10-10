@@ -48,7 +48,9 @@
 
 [24. В каких случаях можно использовать var?](#24-В-каких-случаях-можно-использовать-var)
 
-[25. ](#25-)
+[25. Перечислите конвейерные методы Stream API](#25-Перечислите-конвейерные-методы-Stream-API)
+
+[26. Перечислите терминальные методы Stream API](#25-Перечислите-терминальные-методы-Stream-API)
 
 ## 1. Что такое lamdba выражение?
 
@@ -769,9 +771,13 @@ list.stream() .filter(item -> !item.isEmpty()) .forEach(item -> processItem(item
 
 [к оглавлению](#FP-Lambda-Stream-API)
 
-## 25. ?
+## 25. Перечислите конвейерные методы Stream API
 
+![Конвейерные методы](https://github.com/greenman777/job4j/blob/master/interview_questions/stream_metods_conv.png)
 
+## 26. Перечислите терминальные методы Stream API
+
+![Терминальные методы](https://github.com/greenman777/job4j/blob/master/interview_questions/stream_metods_term.png)
 
 [к оглавлению](#FP-Lambda-Stream-API)
 
