@@ -99,7 +99,7 @@
 
 наглядно из Effective Java:
 
-![img](https://github.com/johnivo/job4j/blob/master/interview_questions/src/main/resources/pro_1.png)
+![img](https://github.com/greenman777/job4j/blob/master/interview_questions/Generics.jpg)
 
 [к оглавлению](#Collections-Pro)
 
