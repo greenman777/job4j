@@ -4,7 +4,7 @@
 
 [1. Что такое генерики?](#1-Что-такое-генерики)
 
-[2. Типы генериков?](#2-Типы-генериков)
+[2. Что такое wild cards?](#2-Что-такое-wild-cards)
 
 [3. Где хранится информация про Generics?](#3-Где-хранится-информация-про-Generics)
 
@@ -101,12 +101,12 @@
 
 [к оглавлению](#Collections-Pro)
 
-## 2. Типы генериков?
+## 2. Что такое wild cards?
 
 Существует 2 типа дженериков:
 
 + **<Т> Обычные дженерики (параметризованные типы)** - представляет возможность указать в классе или методе 
-неопределенный тип или несколько типов, дать ему имя, котрое в дальнейшем можно использовать в рамках класса или метода, 
+неопределенный тип или несколько типов, дать ему имя, которое в дальнейшем можно использовать в рамках класса или метода, 
 как эквивалентное оригинальному типу. 
 
     Может быть использован с ключевым словом `extends`, ограничен этим классом и его наследниками. 
@@ -118,15 +118,16 @@
 + **<?> Wildcard (подстановочные типы или маски)** - используются в сигнатуре методов, но для параметризации класса - нет! 
 Может быть использован в сочитании ключевыми словами `extends` и `super`. Делятся на три типа:
     
-    + Upper Bounded Wildcards `<? extends Number>`
+
+    + Upper Bounded Wildcards `<? extends X>` - класс X или любой его сабкласс
     
-    + Unbounded Wildcards `<?>`
+    + Unbounded Wildcards `<?>` - любой класс
     
-    + Lower Bounded Wildcards `<? super Integer>` 
+    + Lower Bounded Wildcards `<? super Y>` - класс Y или любой его суперкласс
     
 Для выбора типа используют принцип PECS (`Producer Extends` `Consumer Super`)
-+ `extends` - когда надо только получать данные из объекта. Метод передает данные в аргумент.
-+ `super` - когда надо надо только вставлять данные в объект. Метод читает данные из аргумента.
++ `extends` - когда надо только получать данные из объекта. Метод передает данные в аргумент. (Producer)
++ `super` - когда надо надо только вставлять данные в объект. Метод читает данные из аргумента. (Consumer)
 + не использовать `wildcard`, когда требуется и получать и вставлять данные в структуру. 
 
 [к оглавлению](#Collections-Pro)
@@ -134,14 +135,24 @@
 ## 3. Где хранится информация про Generics?
 
 Только в исходном коде до момента компиляции.
+Компилятор стирает информацию о типе, заменяя все параметры без ограничений (unbounded) типом Object, а параметры с границами (bounded) — на эти границы. Это называется type erasure.
 
 [к оглавлению](#Collections-Pro)
 
 ## 4. Как можно получить тип Generics?
 
+Информация о параметрах generic-классов при компиляции существует только в информации о классе, который явно определяет значение параметра в его generic-родителе.
+Узнать всё это нам поможет метод Class.getGenericSuperclass().
+
 ```java
-.getGenericSuperclass()
-Class<T> t = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+public class FloatList extends ArrayList<Float>{}
+ArrayList<Float> listOfNumbers = new FloatList();
+
+Class actualClass = listOfNumbers.getClass();
+ParameterizedType type = (ParameterizedType)actualClass.getGenericSuperclass();
+System.out.println(type); // java.util.ArrayList<java.lang.Float>
+Class parameter = (Class)type.getActualTypeArguments()[0];
+System.out.println(parameter); // class java.lang.Float
 ```
 
 [к оглавлению](#Collections-Pro)
