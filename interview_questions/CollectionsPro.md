@@ -273,8 +273,20 @@ System.out.println(parameter); // class java.lang.Float
 1. Не равны ли ссылки.
 2. Не равен `null`.
 3. Проверяем что объекты от одного класса.
-4. Не равны ли `hashCode`.
-5. Не равны состояния полей.
+4. Не равны состояния полей.
+
+```java
+public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        User user = (User) o;
+        return children == user.children && name.equals(user.name) && birthday.equals(user.birthday);
+    }
+ ```   
     
 **Метод `hashCode()` переопределяется так:**
 1. Простое нечетное число (31 популярно).
