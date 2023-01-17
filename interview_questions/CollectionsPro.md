@@ -321,6 +321,7 @@ result = 31 * result + с;
 
 Получаем в итоге:
 
+```java
 @Override public int hashCode()
 
 {
