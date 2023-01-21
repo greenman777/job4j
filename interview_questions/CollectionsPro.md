@@ -897,6 +897,7 @@ private void inOrder(node localRoot) {
 ## 35. Перечислите побитовые логические операции которые Вы знаете?
 
 ![img](https://github.com/greenman777/job4j/blob/master/interview_questions/bin_operation.jpeg)
+![img](https://github.com/greenman777/job4j/blob/master/interview_questions/bin_result.jpg)
 
 [к оглавлению](#Collections-Pro)
 
