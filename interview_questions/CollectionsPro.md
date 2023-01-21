@@ -807,6 +807,8 @@ public V get(Object key) {
 
 ## 32. Что такое красно-черное дерево?
 
+![img](https://github.com/greenman777/job4j/blob/master/interview_questions/tree_redblack.png)
+
 Красно-черные деревья относятся к сбалансированным бинарным деревьям поиска.
 Как бинарное дерево, красно-черное обладает свойствами:
 
