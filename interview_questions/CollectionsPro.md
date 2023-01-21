@@ -740,7 +740,7 @@ public final class PhoneNumber {
 
 ## 30. Как работает HashMap?
 
-HashMap has an inner class **Entry**:
+HashMap имеет внутренний класс **Entry**:
 ```java
 static class Entry<K ,V> implements Map.Entry<K, V> {
 	final K key;
@@ -749,41 +749,31 @@ static class Entry<K ,V> implements Map.Entry<K, V> {
 	final int hash;
 }
 ```
-**How HashMap.put() methods works:**
+**How HashMap.put() методы работы:**
 
 transient Entry[] table;		
-1. First of all, the key object is checked for null. If the key is null, the value is stored in table[0] position. 
-Because hashcode for null is always 0. 
-2. Then on next step, a hash value is calculated using the key’s hash code by calling its hashCode() method. 
-This hash value is used to calculate the index in the array for storing Entry object. 
-JDK designers well assumed that there might be some poorly written hashCode() functions that can return very high or low hash code value.
-To solve this issue, they introduced another hash() function and passed the object’s hash code to this hash() function 
-to bring hash value in the range of array index size.
-3. Now indexFor(hash, table.length) function is called to calculate exact index position for storing the Entry object.
+1. Прежде всего, ключевой объект проверяется на null. Если ключ равен null, значение сохраняется в позиции таблицы[0].
+Потому что хэш-код для null всегда равен 0.
+2. Затем на следующем шаге хэш-значение вычисляется с использованием хэш-кода ключа путем вызова его метода hashCode().
+Это хэш-значение используется для вычисления индекса в массиве для хранения объекта Entry.
+Разработчики JDK хорошо предположили, что могут существовать некоторые плохо написанные функции hashCode(), которые могут возвращать очень высокое или низкое значение хэш-кода.
+Чтобы решить эту проблему, они ввели другую функцию hash() и передали хэш-код объекта этой функции hash(), чтобы привести хэш-значение в диапазон размера индекса массива.
+3. Теперь **indexFor(hash, table.length)** функция вызывается для вычисления точного положения индекса для хранения объекта ввода.
 
-**How collisions are resolved:**
+**Как разрешаются коллизии:**
 
-as we know that two unequal objects can have the same hash code value, 
-how two different objects will be stored in same array location called bucket.
-The answer is LinkedList. If you remember, Entry class had an attribute "next". 
-This attribute always points to the next object in the chain. This is exactly the behavior of LinkedList.
+Поскольку мы знаем, что два неодинаковых объекта могут иметь одинаковое значение хэш-кода, как два разных объекта будут храниться в одном и том же местоположении массива, называемом bucket.
+Ответ - LinkedList. Если вы помните, у начального класса был атрибут "next".
+Этот атрибут всегда указывает на следующий объект в цепочке. Именно так ведет себя LinkedList.
 
-1. So, in case of collision, Entry objects are stored in linked list form. 
-When an Entry object needs to be stored in particular index, HashMap checks whether there is already an entry?? 
-If there is no entry already present, the entry object is stored in this location. 
-If there is already an object sitting on calculated index, its next attribute is checked. 
-If it is null, and current entry object becomes next node in linkedlist. 
-If next variable is not null, procedure is followed until next is evaluated as null.
+1. Таким образом, в случае коллизий объекты сохраняются в форме связанного списка.
+Когда объект записи необходимо сохранить в определенном индексе, HashMap проверяет, существует ли уже запись?
++ Если запись еще не присутствует, объект сохраняется в этом расположении, next = null.
++ Если объект уже находится в вычисляемом индексе, объекты сравниваются по ключу на hash и equals. Если равны, то заменяется, иначе проверяется next.
++ Если он равен null, текущий объект записи становится следующим узлом в linkedlist.
++ Если следующая переменная не равна null, процедура выполняется до тех пор, пока следующая не будет оценена как null или не найдётся равный объект по ключу.
 
-2. What if we add the another value object with same key as entered before. 
-Logically, it should replace the old value. How it is done? Well, after determining the index position of Entry object, 
-while iterating over linkedist on calculated index, HashMap calls equals method on key object for each entry object.
-
-All these entry objects in linkedlist will have similar hashcode but equals() method will test for true equality. 
-If key.equals(k) will be true then both keys are treated as same key object. 
-This will cause the replacing of value object inside entry object only.
-
-How HashMap.get() methods works:
+Как работают методы HashMap.get():
 ```java
 public V get(Object key) {
     if (key == null)
