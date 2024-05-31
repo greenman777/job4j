@@ -338,28 +338,6 @@ int largerNum = lowNum < highNum ? highNum : lowNum;
 
 **Таблица истинности**
 
-**Логическое И — &, а также условное И — &&**
-a           b          a & b 
-true       true        true
-true       false       false
-false      true        false
-false      false       false
-**Логическое ИЛИ — |, а также условное ИЛИ — ||**
-a            b         a | b 
-true       true        true
-true       false       true
-false      true        true
-false      false       false
-a           !a
-false      true
-true       false
-**XOR Java — логическое исключающее ИЛИ — оператор ^**
-a                           b                       a ^ b
-true                      true                      false
-true                      false                     true
-false                     true                      true
-false                     false                     false
-
 ![image](https://github.com/greenman777/job4j/assets/7414369/568886bd-80e0-4697-a9f2-d5112a8ca441)
 
 [к оглавлению](#Core)
